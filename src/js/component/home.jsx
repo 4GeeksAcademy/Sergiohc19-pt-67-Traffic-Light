@@ -1,26 +1,45 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Lights from "./lights";
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
 
+	const [ShadowGreen, setShadowGreen] = useState();
+	const [ShadowWarning, setShadowWarning] = useState();
+	const [ShadowDanger, setShadowDanger] = useState();
+
+	function ActiveDanger() {
+		setShadowDanger("brillorojo")
+		setShadowGreen("")
+		setShadowWarning("")
+	};
+	function ActiveWarning() {
+		setShadowDanger("")
+		setShadowGreen("")
+		setShadowWarning("brilloambar")
+
+	};
+	function ActiveGreen() {
+		setShadowDanger("")
+		setShadowGreen("brilloverde")
+		setShadowWarning("")
+	};
+
+
+	return (
+		
+			
+			<div className="Group">
+				<button type="button" className={`rojo ${ShadowDanger}`} onClick={ActiveDanger}></button>
+				<button type="button" className={`ambar ${ShadowWarning}`} onClick={ActiveWarning}></button>
+				<button type="button" className={`verde ${ShadowGreen}`} onClick={ActiveGreen}></button>
+			</div>
+			
+		
+
+	);
+
+};
 export default Home;
